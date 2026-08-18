@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProfEdu Manager — Gerenciador Educacional do Professor</title>
+<meta name="description" content="ProfEdu Manager: o app que gerencia o ciclo inteiro da avaliação — da prova impressa à nota no diário. Correção automática pela câmera, 100% offline.">
+<style>
+  :root{
+    --verde-escuro:#1b5e20;
+    --verde:#2e7d32;
+    --verde-claro:#e8f5e9;
+    --tinta:#212121;
+    --cinza:#5f6368;
+    --papel:#ffffff;
+    --fundo:#f6f8f6;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Segoe UI",Roboto,system-ui,-apple-system,sans-serif;color:var(--tinta);background:var(--fundo);line-height:1.6}
+  .topo{background:linear-gradient(160deg,var(--verde-escuro),var(--verde));color:#fff;padding:56px 20px 64px;text-align:center}
+  .logo{width:96px;height:96px;margin:0 auto 20px;display:block}
+  .topo h1{font-size:2.1rem;letter-spacing:.5px}
+  .topo .subtitulo{font-size:1.05rem;opacity:.92;margin-top:6px}
+  .topo .sintese{max-width:640px;margin:22px auto 0;font-size:1.25rem;font-weight:600;line-height:1.45}
+  .faixa-breve{display:inline-block;margin-top:26px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:8px 22px;font-size:.95rem}
+  main{max-width:880px;margin:0 auto;padding:48px 20px}
+  h2{color:var(--verde-escuro);font-size:1.45rem;margin:40px 0 16px;border-bottom:2px solid var(--verde);padding-bottom:6px}
+  h2:first-child{margin-top:0}
+  .cartoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:8px}
+  .cartao{background:var(--papel);border:1px solid #e0e5e0;border-radius:12px;padding:20px}
+  .cartao h3{color:var(--verde);font-size:1.05rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .cartao p{font-size:.95rem;color:var(--cinza)}
+  .cartao svg{flex:none}
+  .passos{counter-reset:passo;display:flex;flex-direction:column;gap:16px;margin-top:8px}
+  .passo{background:var(--papel);border:1px solid #e0e5e0;border-radius:12px;padding:20px 22px}
+  .passo h3{color:var(--verde-escuro);font-size:1.1rem;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+  .passo h3 .num{counter-increment:passo;flex:none;width:32px;height:32px;border-radius:50%;background:var(--verde);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .passo h3 .num::before{content:counter(passo)}
+  .passo ol{margin-left:22px;color:var(--tinta)}
+  .passo ol li{margin-bottom:6px}
+  .passo .dica{margin-top:10px;font-size:.9rem;color:var(--cinza);background:var(--verde-claro);border-radius:8px;padding:8px 12px}
+  .privacidade{background:var(--verde-claro);border:1px solid #c8e6c9;border-radius:12px;padding:22px;margin-top:8px}
+  .privacidade p{margin-bottom:10px}
+  .privacidade p:last-child{margin-bottom:0}
+  a{color:var(--verde-escuro);font-weight:600}
+  .contato{background:var(--papel);border:1px solid #e0e5e0;border-radius:12px;padding:22px;margin-top:8px}
+  footer{text-align:center;color:var(--cinza);font-size:.85rem;padding:32px 20px 40px}
+  @media (max-width:480px){
+    .topo h1{font-size:1.6rem}
+    .topo .sintese{font-size:1.1rem}
+  }
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <!-- «A Folha Corrigida»: folha de respostas com a marca de correção -->
+  <svg class="logo" viewBox="0 0 96 96" role="img" aria-label="Ícone: folha corrigida">
+    <rect x="18" y="8" width="60" height="80" rx="8" fill="#ffffff"/>
+    <rect x="26" y="20" width="32" height="5" rx="2.5" fill="#c8e6c9"/>
+    <rect x="26" y="31" width="44" height="5" rx="2.5" fill="#c8e6c9"/>
+    <rect x="26" y="42" width="38" height="5" rx="2.5" fill="#c8e6c9"/>
+    <rect x="26" y="53" width="44" height="5" rx="2.5" fill="#c8e6c9"/>
+    <path d="M34 66 l12 12 l24 -26" fill="none" stroke="#2e7d32" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h1>ProfEdu Manager</h1>
+  <div class="subtitulo">Gerenciador Educacional do Professor</div>
+  <p class="sintese">O app que gerencia o ciclo inteiro da avaliação —<br>da prova impressa à nota no diário.</p>
+  <span class="faixa-breve">Em breve no Google Play</span>
+</header>
+
+<main>
+  <h2>O que o ProfEdu Manager faz</h2>
+  <div class="cartoes">
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M4 4h16v2H4zm0 5h16v2H4zm0 5h10v2H4zm0 5h16v2H4z"/></svg>Turmas e avaliações</h3>
+      <p>Cadastre turmas e monte avaliações com controle automático dos pontos da unidade.</p>
+    </div>
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M19 8H5c-1.7 0-3 1.3-3 3v6h4v4h12v-4h4v-6c0-1.7-1.3-3-3-3zm-3 11H8v-5h8v5zm3-7c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1zM18 3H6v4h12V3z"/></svg>Prova impressa e embaralhada</h3>
+      <p>Cada estudante recebe uma prova única, com questões e alternativas embaralhadas, pronta para imprimir com a folha de respostas.</p>
+    </div>
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M12 9a3.2 3.2 0 100 6.4A3.2 3.2 0 0012 9zm8-3h-3.2l-1.8-2H9L7.2 6H4C2.9 6 2 6.9 2 8v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-8 12a5 5 0 110-10 5 5 0 010 10z"/></svg>Correção pela câmera</h3>
+      <p>Aponte a câmera para a folha de respostas e a nota sai na hora — 100% no aparelho, sem internet.</p>
+    </div>
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/></svg>Relatórios pedagógicos</h3>
+      <p>Acompanhamento por turma e por estudante, habilidades BNCC, gráficos de evolução e exportação em PDF, Excel e CSV.</p>
+    </div>
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>Nota no diário sem retrabalho</h3>
+      <p>PDF de transcrição com as notas em ordem alfabética, feito para digitar no diário de classe em minutos.</p>
+    </div>
+    <div class="cartao">
+      <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-1.5 16l-4-4 1.4-1.4 2.6 2.6 5.6-5.6L17.5 10l-7 7z"/></svg>Fail-safe por desenho</h3>
+      <p>Leitura por dupla checagem: em dúvida, o app recusa e avisa — nunca inventa nota.</p>
+    </div>
+  </div>
+
+  <h2>Primeiros passos</h2>
+  <div class="passos">
+
+    <div class="passo">
+      <h3><span class="num"></span>Criar uma turma</h3>
+      <ol>
+        <li>Na tela inicial, toque para <strong>criar uma nova turma</strong>.</li>
+        <li>Dê o nome da turma (ex.: «6º A») e escolha o <strong>componente curricular</strong> na lista — se a sua disciplina não estiver lá, use a opção <strong>«Outra»</strong> e digite o nome.</li>
+        <li>Cadastre os estudantes: digite os nomes ou <strong>importe a lista pela câmera</strong> (foto da lista impressa — o app lê os nomes para você).</li>
+      </ol>
+      <div class="dica">Dica: o nome da turma pode carregar a disciplina entre parênteses — ex.: «A (Matemática)» — e os relatórios reconhecem o componente automaticamente.</div>
+    </div>
+
+    <div class="passo">
+      <h3><span class="num"></span>Montar uma avaliação (AV)</h3>
+      <ol>
+        <li>Dentro da turma, crie a <strong>avaliação</strong>: escolha a <strong>unidade</strong> e o <strong>valor</strong> da prova.</li>
+        <li>O app controla sozinho o teto de <strong>10 pontos por unidade</strong> — ele avisa se a soma das avaliações passar do limite.</li>
+        <li>Defina a <strong>quantidade de questões</strong> (até 40) e o número de <strong>alternativas</strong>.</li>
+      </ol>
+      <div class="dica">Além das AVs, o app registra atividades e recuperação paralela — e calcula o resultado da unidade automaticamente.</div>
+    </div>
+
+    <div class="passo">
+      <h3><span class="num"></span>Preencher o gabarito</h3>
+      <ol>
+        <li>Na tela do gabarito, marque a <strong>resposta correta de cada questão</strong> — esse é o gabarito que a câmera vai usar na correção.</li>
+        <li>Se quiser imprimir a prova completa pelo app, escreva as questões no <strong>Ambiente de edição</strong>: digite, cole ou <strong>importe de Word/PDF</strong>; dá para inserir fotos e equações.</li>
+        <li>Use o botão <strong>«Distribuir»</strong> para separar o texto nos quadros Questão 1, Questão 2…</li>
+        <li>Opcional: informe o <strong>código BNCC</strong> (e descritores SAEB) de cada questão — é isso que alimenta os relatórios pedagógicos.</li>
+      </ol>
+    </div>
+
+    <div class="passo">
+      <h3><span class="num"></span>Gerar a avaliação</h3>
+      <ol>
+        <li>Abra a <strong>prévia</strong> e confira como a prova vai sair no papel.</li>
+        <li>Gere as provas: <strong>cada estudante recebe uma prova única</strong>, com questões e alternativas embaralhadas, junto com a folha de respostas identificada por QR code.</li>
+        <li><strong>Imprima</strong> direto do app ou salve o PDF — o arquivo já sai alinhado para impressão frente e verso.</li>
+        <li>Depois da prova, é só apontar a <strong>câmera</strong> para a folha de respostas: a nota entra sozinha no boletim da turma.</li>
+      </ol>
+      <div class="dica">Regra de ouro do app: em caso de dúvida na leitura, ele recusa e pede nova captura — nunca chuta uma nota.</div>
+    </div>
+
+  </div>
+
+  <h2>Privacidade em primeiro lugar</h2>
+  <div class="privacidade">
+    <p>O ProfEdu Manager foi desenhado para funcionar <strong>offline</strong>: notas, turmas e todos os dados pedagógicos são processados e armazenados <strong>exclusivamente no aparelho do professor</strong> — nada é enviado a servidores.</p>
+    <p>Leia a <a href="https://profedu-manager.github.io/profeduprivacidade/">Política de Privacidade completa</a>.</p>
+  </div>
+
+  <h2>Contato e suporte</h2>
+  <div class="contato">
+    <p>Dúvidas, sugestões ou suporte: <a href="mailto:profedumanager@gmail.com">profedumanager@gmail.com</a></p>
+  </div>
+</main>
+
+<footer>
+  © 2026 ProfEdu Manager — Genivaldo França de Oliveira. Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
