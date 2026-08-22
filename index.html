@@ -28,6 +28,13 @@
   .topo .subtitulo{font-size:1.05rem;opacity:.92;margin-top:6px}
   .topo .sintese{max-width:640px;margin:22px auto 0;font-size:1.25rem;font-weight:600;line-height:1.45}
   .faixa-breve{display:inline-block;margin-top:26px;background:var(--verde-claro);border:1px solid var(--verde);border-radius:999px;padding:8px 22px;font-size:.95rem;color:var(--verde-escuro)}
+  /* Botão «Curtir» com contador público do GoatCounter (22/08) */
+  .curtir{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin:16px auto 0}
+  .curtir button{font:inherit;font-size:.95rem;font-weight:600;color:#fff;background:var(--verde);border:1px solid var(--verde);border-radius:999px;padding:8px 18px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+  .curtir button:hover{background:var(--verde-escuro)}
+  .curtir button[disabled]{background:var(--verde-claro);color:var(--verde-escuro);cursor:default}
+  .curtir .total{font-size:.95rem;color:var(--verde-escuro)}
+  .curtir .total b{font-size:1.05rem}
   main{max-width:880px;margin:0 auto;padding:48px 20px}
   h2{color:var(--verde-escuro);font-size:1.45rem;margin:40px 0 16px;border-bottom:2px solid var(--verde);padding-bottom:6px}
   h2:first-child{margin-top:0}
@@ -36,6 +43,13 @@
   .cartao h3{color:var(--verde);font-size:1.05rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
   .cartao p{font-size:.95rem;color:var(--cinza)}
   .cartao svg{flex:none}
+  /* Descrição completa (mesma da ficha da Play, 22/08) */
+  .descricao{background:var(--papel);border:1px solid #e0e5e0;border-radius:12px;padding:22px 24px;margin-top:8px}
+  .descricao p{margin-bottom:12px}
+  .descricao h4{color:var(--verde-escuro);font-size:1rem;letter-spacing:.4px;margin:18px 0 8px}
+  .descricao ul{margin-left:22px}
+  .descricao ul li{margin-bottom:8px}
+  .descricao .assinatura{margin-top:16px;font-weight:600;color:var(--verde-escuro);margin-bottom:0}
   .passos{counter-reset:passo;display:flex;flex-direction:column;gap:16px;margin-top:8px}
   .passo{background:var(--papel);border:1px solid #e0e5e0;border-radius:12px;padding:20px 22px}
   .passo h3{color:var(--verde-escuro);font-size:1.1rem;margin-bottom:10px;display:flex;align-items:center;gap:12px}
@@ -66,6 +80,13 @@
   <div class="subtitulo">Gerenciador Educacional do Professor</div>
   <p class="sintese">O app que gerencia o ciclo inteiro da avaliação —<br>da prova impressa à nota no diário.</p>
   <span class="faixa-breve">Em breve no Google Play</span>
+  <span class="curtir">
+    <button type="button" id="btn-curtir" aria-label="Curtir o ProfEdu Manager">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 21h4V9H2v12zm20-11c0-1.1-.9-2-2-2h-6.3l1-4.6v-.3c0-.4-.2-.8-.4-1.1L13.2 1 6.6 7.6C6.2 8 6 8.5 6 9v10c0 1.1.9 2 2 2h9c.8 0 1.5-.5 1.8-1.2l3-7c.1-.2.2-.5.2-.8v-2z"/></svg>
+      <span id="txt-curtir">Curtir</span>
+    </button>
+    <span class="total"><b id="num-curtidas">—</b> curtida(s)</span>
+  </span>
 </header>
 
 <main>
@@ -95,6 +116,31 @@
       <h3><svg width="22" height="22" viewBox="0 0 24 24" fill="#2e7d32"><path d="M12 1L3 5v6c0 5.6 3.8 10.7 9 12 5.2-1.3 9-6.4 9-12V5l-9-4zm-1.5 16l-4-4 1.4-1.4 2.6 2.6 5.6-5.6L17.5 10l-7 7z"/></svg>Fail-safe por desenho</h3>
       <p>Leitura por dupla checagem: em dúvida, o app recusa e avisa — nunca inventa nota.</p>
     </div>
+  </div>
+
+  <h2>Conheça o app por completo</h2>
+  <div class="descricao">
+    <p>ProfEdu Manager é o Gerenciador Educacional do Professor: o app que gerencia o ciclo inteiro da avaliação — da prova impressa à nota no diário — sem depender de internet.</p>
+    <h4>O QUE VOCÊ FAZ COM ELE</h4>
+    <ul>
+      <li><b>Cadastra suas turmas em minutos:</b> digite a lista, importe de um arquivo (Word, PDF, Excel, CSV, TXT) ou fotografe a lista de chamada (a foto é apagada logo após a leitura).</li>
+      <li><b>Monta a prova no próprio app:</b> importe as questões de um documento ou digite, insira imagens, símbolos e equações, e indique as habilidades da BNCC e os descritores do SAEB de cada questão (com sugestões automáticas).</li>
+      <li><b>Gera uma prova diferente para cada estudante:</b> as questões e as alternativas são embaralhadas por estudante, com QR de identificação e folha de respostas de até 40 questões. Você também pode usar a sua própria prova e gerar só a folha de respostas.</li>
+      <li><b>Corrige pela câmera, 100 % no aparelho:</b> aponte para a folha, o app enquadra sozinho, lê as marcações, mostra a conferência visual e só então grava a nota. Quando a leitura não é segura, o app diz o motivo e não grava nada — nunca uma nota errada em silêncio. Se preferir, digite as respostas com a folha na mão.</li>
+      <li><b>Organiza a caderneta por unidade ou bimestre:</b> avaliações (AV), atividades processuais (AP), recuperação paralela, resultado da unidade automático (com a trava dos 10 pontos) e fechamento anual com média mínima que você define.</li>
+      <li><b>Acompanha o aprendizado:</b> relatório por turma e por estudante, aproveitamento por avaliação, acertos por questão, habilidades BNCC fortes e a reforçar, questões críticas, evolução no ano, alertas de risco e documentação pedagógica para o conselho de classe.</li>
+      <li><b>Exporta tudo:</b> PDF, Excel e CSV do relatório e do mapa de notas, PDF de transcrição para o diário (uma tabela Estudante × Nota por avaliação, pronta para lançar no sistema da escola), provas e espelhos do gabarito para reimprimir ou compartilhar.</li>
+    </ul>
+    <h4>PENSADO PARA A SALA DE AULA</h4>
+    <ul>
+      <li>Funciona sem internet — todos os dados ficam no seu aparelho, em banco de dados cifrado.</li>
+      <li>Nenhuma foto de prova ou de estudante é guardada: a leitura é feita ao vivo e descartada.</li>
+      <li>Compatível com Unidades (3) ou Bimestres (4), Ensino Fundamental, Médio e EJA.</li>
+      <li>Matrizes de referência: BNCC e SAEB (5º e 9º ano do EF, 3ª série do EM, alfabetização no 2º ano e EJA).</li>
+    </ul>
+    <h4>GRÁTIS PARA SEMPRE</h4>
+    <p>Caderneta com turmas e estudantes ilimitados, atividades processuais em todas as turmas, relatórios e exportações de tudo o que já foi corrigido, e correção automática (câmera + editor por questão) em 1 turma por ano. Planos anuais para mais turmas, com pagamento único e sem renovação automática — o app nunca cobra sozinho, e as suas notas nunca ficam bloqueadas.</p>
+    <p class="assinatura">Feito por professor, para professor.</p>
   </div>
 
   <h2>Primeiros passos</h2>
@@ -169,6 +215,48 @@
         async src="https://gc.zgo.at/count.v5.js"
         integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"
         crossorigin="anonymous"></script>
+
+<!-- Botão «Curtir» (22/08): cada clique vira um EVENTO no GoatCounter
+     (caminho «/curtir») e o número exibido vem do contador público
+     do próprio GoatCounter. Exige, no painel, Settings ›
+     «Allow adding visitor counts on your website». Sem servidor, sem
+     cookie; localStorage só lembra «já curtiu» neste navegador. -->
+<script>
+(function () {
+  var CAMINHO = '/curtir';
+  var URL_CONTADOR = 'https://profedu-manager.goatcounter.com/counter/' + encodeURIComponent(CAMINHO) + '.json';
+  var CHAVE = 'profedu_curtiu';
+  var btn = document.getElementById('btn-curtir');
+  var txt = document.getElementById('txt-curtir');
+  var num = document.getElementById('num-curtidas');
+  if (!btn) return;
+
+  function jaCurtiu() { try { return localStorage.getItem(CHAVE) === '1'; } catch (e) { return false; } }
+  function marcar() { try { localStorage.setItem(CHAVE, '1'); } catch (e) {} }
+  function travar() { btn.disabled = true; txt.textContent = 'Você curtiu ✓'; }
+
+  function carregarTotal() {
+    fetch(URL_CONTADOR, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) { if (j && j.count != null) num.textContent = String(j.count).replace(/\s/g, ''); })
+      .catch(function () {});
+  }
+
+  if (jaCurtiu()) travar();
+  carregarTotal();
+
+  btn.addEventListener('click', function () {
+    if (jaCurtiu()) return;
+    marcar(); travar();
+    var atual = parseInt(num.textContent, 10);
+    num.textContent = isNaN(atual) ? '1' : String(atual + 1);
+    if (window.goatcounter && typeof window.goatcounter.count === 'function') {
+      window.goatcounter.count({ path: CAMINHO, title: 'Curtir', event: true });
+      setTimeout(carregarTotal, 2500);
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
