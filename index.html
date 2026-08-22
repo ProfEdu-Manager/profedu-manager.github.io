@@ -237,7 +237,7 @@
 
   function carregarTotal() {
     fetch(URL_CONTADOR, { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (r) { return r.ok ? r.json() : (r.status === 404 ? { count: 0 } : null); })
       .then(function (j) { if (j && j.count != null) num.textContent = String(j.count).replace(/\s/g, ''); })
       .catch(function () {});
   }
