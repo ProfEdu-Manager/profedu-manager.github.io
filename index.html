@@ -224,7 +224,11 @@
 <script>
 (function () {
   var CAMINHO = '/curtir';
-  var URL_CONTADOR = 'https://profedu-manager.goatcounter.com/counter/' + encodeURIComponent(CAMINHO) + '.json';
+  // O GoatCounter grava o evento SEM a barra inicial («curtir»), e é assim
+  // que o contador público tem de ser consultado — «/counter//curtir.json»
+  // devolve 404 (medido 22/08). O 404 NÃO é zero: significa «ainda não
+  // agregado», então nunca pode abaixar o número já exibido.
+  var URL_CONTADOR = 'https://profedu-manager.goatcounter.com/counter/curtir.json';
   var CHAVE = 'profedu_curtiu';
   var btn = document.getElementById('btn-curtir');
   var txt = document.getElementById('txt-curtir');
@@ -235,24 +239,35 @@
   function marcar() { try { localStorage.setItem(CHAVE, '1'); } catch (e) {} }
   function travar() { btn.disabled = true; txt.textContent = 'Você curtiu ✓'; }
 
+  function exibido() { var n = parseInt(num.textContent, 10); return isNaN(n) ? 0 : n; }
+
   function carregarTotal() {
     fetch(URL_CONTADOR, { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : (r.status === 404 ? { count: 0 } : null); })
-      .then(function (j) { if (j && j.count != null) num.textContent = String(j.count).replace(/\s/g, ''); })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || j.count == null) return;
+        var servidor = parseInt(String(j.count).replace(/\D/g, ''), 10);
+        if (isNaN(servidor)) return;
+        // Nunca diminui: entre o clique e a agregação do GoatCounter o
+        // servidor ainda não conhece a sua curtida.
+        num.textContent = String(Math.max(servidor, exibido()));
+      })
       .catch(function () {});
   }
 
-  if (jaCurtiu()) travar();
+  if (jaCurtiu()) { travar(); num.textContent = '1'; }
   carregarTotal();
 
   btn.addEventListener('click', function () {
     if (jaCurtiu()) return;
     marcar(); travar();
-    var atual = parseInt(num.textContent, 10);
-    num.textContent = isNaN(atual) ? '1' : String(atual + 1);
+    num.textContent = String(exibido() + 1);
     if (window.goatcounter && typeof window.goatcounter.count === 'function') {
       window.goatcounter.count({ path: CAMINHO, title: 'Curtir', event: true });
-      setTimeout(carregarTotal, 2500);
+      // A agregação do GoatCounter demora; reconsulta algumas vezes.
+      setTimeout(carregarTotal, 5000);
+      setTimeout(carregarTotal, 15000);
+      setTimeout(carregarTotal, 45000);
     }
   });
 })();
